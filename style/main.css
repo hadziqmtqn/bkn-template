@@ -73,7 +73,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand-logo {
-    height: 42px;
+    height: 52px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 767px) {
     .brand-logo {
-        height: 32px;
+        height: 42px;
     }
 }
 
@@ -95,6 +95,90 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-link:hover {
     color: var(--accent) !important;
+}
+
+/* Navbar Dropdown Modern Styling */
+.dropdown-menu {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 0.8rem;
+    box-shadow: var(--card-shadow);
+    margin-top: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: block; /* Required for transition */
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 0.7rem 1.2rem;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background: rgba(var(--accent-rgb), 0.08);
+    color: var(--accent);
+    transform: translateX(5px);
+}
+
+.dropdown-item.active {
+    background: rgba(var(--accent-rgb), 0.12);
+    color: var(--accent);
+    font-weight: 600;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-item.active::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.5);
+}
+
+.dropdown-toggle::after {
+    transition: transform 0.3s ease;
+    vertical-align: 0.15em;
+}
+
+.dropdown-toggle.show::after {
+    transform: rotate(180deg);
+}
+
+@media (max-width: 991px) {
+    .dropdown-menu {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding-left: 1.5rem;
+        margin-top: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        display: none;
+    }
+    .dropdown-menu.show {
+        display: block;
+    }
+    .dropdown-item:hover {
+        transform: none;
+    }
 }
 
 .btn-nav {
