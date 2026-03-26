@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syarat & Ketentuan - Bekenweb</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0f1a;
+            --bg-secondary: #111827;
+            --bg-card: #1a2332;
+            --accent: #00d4aa;
+            --accent-secondary: #0891b2;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: #2d3a4f;
+            --gradient-1: linear-gradient(135deg, #00d4aa 0%, #0891b2 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background: rgba(10, 15, 26, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-custom.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(10, 15, 26, 0.95);
+        }
+
+        .navbar-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-primary) !important;
+        }
+
+        .navbar-brand span {
+            color: var(--accent);
+        }
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent) !important;
+        }
+
+        .btn-nav {
+            background: var(--gradient-1);
+            color: var(--bg-primary) !important;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 170, 0.4);
+            color: var(--bg-primary);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 160px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .page-header-gradient {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.3;
+        }
+
+        .page-header-gradient-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            top: -250px;
+            right: -100px;
+        }
+
+        .page-header-gradient-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%);
+            bottom: -200px;
+            left: -100px;
+        }
+
+        .breadcrumb-nav {
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb {
+            background: transparent;
+            padding: 0;
+            margin: 0;
+        }
+
+        .breadcrumb-item {
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb-item a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: var(--accent);
+        }
+
+        .breadcrumb-item.active {
+            color: var(--text-primary);
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: "/";
+            color: var(--text-muted);
+        }
+
+        .page-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .page-title .highlight {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        .page-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .page-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .page-meta-item i {
+            color: var(--accent);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 0 0 100px;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar-nav {
+            position: sticky;
+            top: 100px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.25rem;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 0.6rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            border-left: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-menu a:hover {
+            color: var(--accent);
+            background: rgba(0, 212, 170, 0.05);
+            border-left-color: var(--accent);
+        }
+
+        .sidebar-menu a.active {
+            color: var(--accent);
+            background: rgba(0, 212, 170, 0.1);
+            border-left-color: var(--accent);
+        }
+
+        /* Main Content */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+
+        .content-block {
+            margin-bottom: 3rem;
+        }
+
+        .content-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-block h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .content-block h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0.75rem;
+            width: 3px;
+            background: var(--gradient-1);
+            border-radius: 3px;
+        }
+
+        .content-block h3 {
+            font-size: 1.15rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .content-block p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .content-block ul,
+        .content-block ol {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .content-block li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content-block strong {
+            color: var(--text-primary);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: #f97316;
+            margin-bottom: 0.5rem;
+        }
+
+        .warning-box p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Table of Contents Mobile */
+        .toc-mobile {
+            display: none;
+            margin-bottom: 2rem;
+        }
+
+        .toc-btn {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .toc-btn:focus {
+            box-shadow: none;
+            border-color: var(--accent);
+        }
+
+        .toc-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .toc-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-content a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .toc-content a:hover {
+            color: var(--accent);
+            background: rgba(0, 212, 170, 0.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0 30px;
+        }
+
+        .footer-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand span {
+            color: var(--accent);
+        }
+
+        .footer-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            margin-top: 40px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .page-header {
+                padding-top: 140px;
+            }
+
+            .sidebar-nav {
+                display: none;
+            }
+
+            .toc-mobile {
+                display: block;
+            }
+
+            .content-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .page-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Mobile Nav */
+        .navbar-toggler {
+            border: 1px solid var(--border-color);
+            padding: 0.5rem;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(241, 245, 249, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .navbar-collapse {
+            background: var(--bg-card);
+            margin-top: 1rem;
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Print Styles */
+        @media print {
+            .navbar-custom,
+            .footer,
+            .sidebar-nav,
+            .toc-mobile {
+                display: none !important;
+            }
+
+            .content-card {
+                background: white;
+                border: none;
+                color: black;
+            }
+
+            .content-block h2,
+            .content-block h3,
+            .content-block strong {
+                color: black;
+            }
+
+            .content-block p,
+            .content-block ul,
+            .content-block ol {
+                color: #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Beken<span>web</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ppdb-online.html">PPDB Online</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="spp-online.html">SPP Online</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Layanan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Kontak</a>
+                    </li>
+                </ul>
+                <a href="index.html#contact" class="btn btn-nav">Hubungi Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-bg">
+            <div class="page-header-gradient page-header-gradient-1"></div>
+            <div class="page-header-gradient page-header-gradient-2"></div>
+        </div>
+        <div class="container">
+            <nav class="breadcrumb-nav" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Syarat & Ketentuan</li>
+                </ol>
+            </nav>
+            <h1 class="page-title">Syarat & <span class="highlight">Ketentuan</span></h1>
+            <p class="page-desc">
+                Ketentuan dan peraturan yang mengatur penggunaan layanan Bekenweb. Harap dibaca dengan seksama sebelum menggunakan layanan kami.
+            </p>
+            <div class="page-meta">
+                <div class="page-meta-item">
+                    <i class="bi bi-calendar3"></i>
+                    <span>Terakhir diperbarui: 15 Januari 2024</span>
+                </div>
+                <div class="page-meta-item">
+                    <i class="bi bi-file-text"></i>
+                    <span>Dokumen Legal</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-lg-3">
+                    <nav class="sidebar-nav" id="sidebarNav">
+                        <div class="sidebar-title">Daftar Isi</div>
+                        <ul class="sidebar-menu">
+                            <li><a href="#ketentuan-umum" class="active">1. Ketentuan Umum</a></li>
+                            <li><a href="#layanan">2. Layanan</a></li>
+                            <li><a href="#hak-kewajiban">3. Hak & Kewajiban</a></li>
+                            <li><a href="#pembayaran">4. Pembayaran</a></li>
+                            <li><a href="#pembatalan">5. Pembatalan & Pengembalian</a></li>
+                            <li><a href="#hak-cipta">6. Hak Kekayaan Intelektual</a></li>
+                            <li><a href="#batasan">7. Batasan Tanggung Jawab</a></li>
+                            <li><a href="#sengketa">8. Penyelesaian Sengketa</a></li>
+                            <li><a href="#perubahan">9. Perubahan Ketentuan</a></li>
+                            <li><a href="#kontak">10. Kontak</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-lg-9">
+                    <!-- Mobile TOC -->
+                    <div class="toc-mobile">
+                        <button class="toc-btn" type="button" data-bs-toggle="collapse" data-bs-target="#tocContent" aria-expanded="false" aria-controls="tocContent">
+                            <span><i class="bi bi-list-ul me-2"></i>Daftar Isi</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <div class="collapse" id="tocContent">
+                            <div class="toc-content">
+                                <ul>
+                                    <li><a href="#ketentuan-umum">1. Ketentuan Umum</a></li>
+                                    <li><a href="#layanan">2. Layanan</a></li>
+                                    <li><a href="#hak-kewajiban">3. Hak & Kewajiban</a></li>
+                                    <li><a href="#pembayaran">4. Pembayaran</a></li>
+                                    <li><a href="#pembatalan">5. Pembatalan & Pengembalian</a></li>
+                                    <li><a href="#hak-cipta">6. Hak Kekayaan Intelektual</a></li>
+                                    <li><a href="#batasan">7. Batasan Tanggung Jawab</a></li>
+                                    <li><a href="#sengketa">8. Penyelesaian Sengketa</a></li>
+                                    <li><a href="#perubahan">9. Perubahan Ketentuan</a></li>
+                                    <li><a href="#kontak">10. Kontak</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <!-- Section 1: Ketentuan Umum -->
+                        <div class="content-block" id="ketentuan-umum">
+                            <h2>1. Ketentuan Umum</h2>
+                            <p>Selamat datang di Bekenweb. Dengan mengakses dan menggunakan layanan kami, Anda menyetujui untuk terikat oleh Syarat dan Ketentuan berikut. Jika Anda tidak menyetujui ketentuan ini, mohon untuk tidak menggunakan layanan kami.</p>
+                            
+                            <h3>1.1 Definisi</h3>
+                            <ul>
+                                <li><strong>"Kami"</strong> atau <strong>"Bekenweb"</strong> mengacu pada penyedia layanan website dan sistem informasi pendidikan.</li>
+                                <li><strong>"Anda"</strong> atau <strong>"Pengguna"</strong> mengacu pada individu atau lembaga yang menggunakan layanan kami.</li>
+                                <li><strong>"Layanan"</strong> mengacu pada semua produk dan jasa yang ditawarkan oleh Bekenweb.</li>
+                                <li><strong>"Website"</strong> mengacu pada situs web yang dikelola oleh Bekenweb.</li>
+                            </ul>
+
+                            <h3>1.2 Kelayakan</h3>
+                            <p>Untuk menggunakan layanan kami, Anda harus:</p>
+                            <ul>
+                                <li>Berusia minimal 18 tahun atau mendapatkan persetujuan dari orang tua/wali.</li>
+                                <li>Memiliki kapasitas hukum untuk mengikat perjanjian.</li>
+                                <li>Bertindak atas nama diri sendiri atau lembaga yang Anda wakili dengan kewenangan yang sah.</li>
+                            </ul>
+
+                            <div class="highlight-box">
+                                <div class="highlight-box-title">
+                                    <i class="bi bi-info-circle"></i>
+                                    <span>Informasi Penting</span>
+                                </div>
+                                <p>Dengan menggunakan layanan kami, Anda menyatakan bahwa Anda telah membaca, memahami, dan menyetujui semua ketentuan yang tercantum dalam dokumen ini.</p>
+                            </div>
+                        </div>
+
+                        <!-- Section 2: Layanan -->
+                        <div class="content-block" id="layanan">
+                            <h2>2. Layanan</h2>
+                            <p>Bekenweb menyediakan berbagai layanan untuk lembaga pendidikan yang meliputi namun tidak terbatas pada:</p>
+                            
+                            <h3>2.1 Jenis Layanan</h3>
+                            <ul>
+                                <li><strong>Website Sekolah/Pesantren/Madrasah:</strong> Pembuatan dan pengelolaan website institusi pendidikan.</li>
+                                <li><strong>PPDB Online:</strong> Sistem penerimaan peserta didik baru secara online.</li>
+                                <li><strong>SPP Online:</strong> Sistem pembayaran dan administrasi keuangan sekolah.</li>
+                                <li><strong>Hosting & Domain:</strong> Layanan hosting dan registrasi domain.</li>
+                                <li><strong>E-Learning:</strong> Platform pembelajaran online.</li>
+                                <li><strong>Layanan Digital Lainnya:</strong> Sistem pendukung operasional sekolah lainnya.</li>
+                            </ul>
+
+                            <h3>2.2 Batasan Layanan</h3>
+                            <p>Layanan yang diberikan memiliki batasan tertentu sesuai dengan paket yang dipilih. Batasan tersebut dapat mencakup:</p>
+                            <ul>
+                                <li>Kapasitas penyimpanan dan bandwidth hosting.</li>
+                                <li>Jumlah pengguna atau pendaftar untuk sistem online.</li>
+                                <li>Fitur-fitur tertentu yang hanya tersedia pada paket tertentu.</li>
+                                <li>Masa aktif layanan sesuai periode berlangganan.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Section 3: Hak dan Kewajiban -->
+                        <div class="content-block" id="hak-kewajiban">
+                            <h2>3. Hak dan Kewajiban</h2>
+                            
+                            <h3>3.1 Hak dan Kewajiban Pengguna</h3>
+                            <p>Sebagai pengguna layanan, Anda memiliki hak dan kewajiban sebagai berikut:</p>
+                            <ul>
+                                <li><strong>Hak Pengguna:</strong>
+                                    <ul>
+                                        <li>Mendapatkan layanan sesuai dengan spesifikasi yang telah disepakati.</li>
+                                        <li>Mendapatkan dukungan teknis sesuai dengan paket yang dipilih.</li>
+                                        <li>Mendapatkan informasi terkait perubahan layanan atau kebijakan.</li>
+                                        <li>Mengajukan keluhan atau saran terkait layanan.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Kewajiban Pengguna:</strong>
+                                    <ul>
+                                        <li>Memberikan informasi yang akurat dan lengkap saat pendaftaran.</li>
+                                        <li>Melakukan pembayaran sesuai dengan ketentuan yang berlaku.</li>
+                                        <li>Tidak menggunakan layanan untuk aktivitas ilegal atau melanggar hukum.</li>
+                                        <li>Menjaga kerahasiaan akses akun dan password.</li>
+                                        <li>Tidak menyalahgunakan atau merusak sistem layanan.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <h3>3.2 Hak dan Kewajiban Bekenweb</h3>
+                            <ul>
+                                <li><strong>Hak Bekenweb:</strong>
+                                    <ul>
+                                        <li>Mengubah atau menghentikan layanan dengan pemberitahuan terlebih dahulu.</li>
+                                        <li>Menolak atau membatalkan layanan jika terjadi pelanggaran ketentuan.</li>
+                                        <li>Mengakses data sistem untuk keperluan maintenance dan keamanan.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Kewajiban Bekenweb:</strong>
+                                    <ul>
+                                        <li>Menyediakan layanan sesuai dengan standar kualitas yang dijanjikan.</li>
+                                        <li>Memberikan dukungan teknis kepada pengguna.</li>
+                                        <li>Menjaga kerahasiaan data pengguna sesuai kebijakan privasi.</li>
+                                        <li>Melakukan backup data secara berkala.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Section 4: Pembayaran -->
+                        <div class="content-block" id="pembayaran">
+                            <h2>4. Pembayaran</h2>
+                            
+                            <h3>4.1 Harga dan Biaya</h3>
+                            <p>Harga layanan tercantum pada website atau proposal penawaran. Harga yang tercantum dapat berubah sewaktu-waktu dengan pemberitahuan terlebih dahulu. Untuk pelanggan yang telah berlangganan, perubahan harga berlaku pada periode perpanjangan berikutnya.</p>
+
+                            <h3>4.2 Metode Pembayaran</h3>
+                            <p>Kami menerima pembayaran melalui berbagai metode:</p>
+                            <ul>
+                                <li>Transfer bank ke rekening yang tercantum di invoice.</li>
+                                <li>Pembayaran tunai di kantor kami.</li>
+                                <li>Metode pembayaran lain yang disepakati.</li>
+                            </ul>
+
+                            <h3>4.3 Ketentuan Pembayaran</h3>
+                            <ul>
+                                <li>Pembayaran dilakukan di muka sebelum layanan aktif.</li>
+                                <li>Invoice harus dibayar dalam waktu 7 (tujuh) hari setelah diterbitkan.</li>
+                                <li>Keterlambatan pembayaran dapat mengakibatkan penghentian sementara layanan.</li>
+                                <li>Perpanjangan layanan harus dilakukan sebelum masa aktif berakhir.</li>
+                            </ul>
+
+                            <div class="warning-box">
+                                <div class="warning-box-title">
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                    <span>Perhatian</span>
+                                </div>
+                                <p>Layanan yang tidak diperpanjang dalam waktu 30 hari setelah masa aktif berakhir dapat mengakibatkan penghapusan data. Kami tidak bertanggung jawab atas kehilangan data akibat keterlambatan perpanjangan.</p>
+                            </div>
+                        </div>
+
+                        <!-- Section 5: Pembatalan dan Pengembalian -->
+                        <div class="content-block" id="pembatalan">
+                            <h2>5. Pembatalan dan Pengembalian Dana</h2>
+                            
+                            <h3>5.1 Pembatalan Layanan</h3>
+                            <p>Pembatalan layanan dapat dilakukan dengan ketentuan sebagai berikut:</p>
+                            <ul>
+                                <li><strong>Sebelum layanan aktif:</strong> Pengembalian dana penuh dikurangi biaya administrasi 10%.</li>
+                                <li><strong>Setelah layanan aktif (0-14 hari):</strong> Pengembalian dana 75% dari nilai pembayaran.</li>
+                                <li><strong>Setelah layanan aktif (15-30 hari):</strong> Pengembalian dana 50% dari nilai pembayaran.</li>
+                                <li><strong>Lebih dari 30 hari:</strong> Tidak ada pengembalian dana.</li>
+                            </ul>
+
+                            <h3>5.2 Penghentian Layanan oleh Bekenweb</h3>
+                            <p>Kami berhak menghentikan layanan dalam kondisi berikut:</p>
+                            <ul>
+                                <li>Pelanggaran terhadap Syarat dan Ketentuan.</li>
+                                <li>Kegiatan ilegal atau merugikan pihak lain menggunakan layanan kami.</li>
+                                <li>Keterlambatan pembayaran lebih dari 30 hari.</li>
+                                <li>Penggunaan layanan di luar tujuan pendidikan yang wajar.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Section 6: Hak Kekayaan Intelektual -->
+                        <div class="content-block" id="hak-cipta">
+                            <h2>6. Hak Kekayaan Intelektual</h2>
+                            
+                            <h3>6.1 Kepemilikan Konten</h3>
+                            <p>Semua konten, desain, logo, dan materi kreatif yang dihasilkan oleh Bekenweb untuk pengguna menjadi hak milik pengguna setelah pembayaran lunas, kecuali:</p>
+                            <ul>
+                                <li>Template dan tema yang merupakan hak milik Bekenweb atau pihak ketiga.</li>
+                                <li>Software dan sistem yang merupakan platform utama layanan.</li>
+                                <li>Materi yang secara eksplisit ditetapkan sebagai lisensi.</li>
+                            </ul>
+
+                            <h3>6.2 Lisensi Penggunaan</h3>
+                            <p>Pengguna diberikan lisensi non-eksklusif untuk menggunakan platform dan sistem yang disediakan selama masa berlangganan aktif. Lisensi ini tidak dapat dialihkan tanpa izin tertulis dari Bekenweb.</p>
+
+                            <h3>6.3 Konten Pengguna</h3>
+                            <p>Pengguna bertanggung jawab penuh atas konten yang diunggah ke website atau sistem. Pengguna menjamin bahwa konten tidak melanggar hak cipta, merek dagang, atau hak kekayaan intelektual pihak lain.</p>
+                        </div>
+
+                        <!-- Section 7: Batasan Tanggung Jawab -->
+                        <div class="content-block" id="batasan">
+                            <h2>7. Batasan Tanggung Jawab</h2>
+                            
+                            <h3>7.1 Batasan Umum</h3>
+                            <p>Bekenweb tidak bertanggung jawab atas:</p>
+                            <ul>
+                                <li>Kerugian tidak langsung, insidental, atau konsekuensial yang timbul dari penggunaan layanan.</li>
+                                <li>Kehilangan data akibat kelalaian pengguna atau force majeure.</li>
+                                <li>Gangguan layanan akibat masalah koneksi internet atau infrastruktur di luar kendali kami.</li>
+                                <li>Kerusakan atau kehilangan data akibat serangan siber yang bukan disebabkan kelalaian kami.</li>
+                                <li>Konten pihak ketiga yang ditautkan dari website pengguna.</li>
+                            </ul>
+
+                            <h3>7.2 Jaminan Layanan</h3>
+                            <p>Kami berkomitmen untuk menyediakan layanan dengan uptime minimal 99.5%. Namun, kami tidak menjamin bahwa layanan akan bebas dari gangguan atau error. Pemeliharaan rutin dan darurat dapat dilakukan dengan pemberitahuan terlebih dahulu.</p>
+
+                            <h3>7.3 Ganti Rugi</h3>
+                            <p>Tanggung jawab maksimal kami terbatas pada jumlah yang telah dibayarkan oleh pengguna untuk periode layanan yang bersangkutan. Kami tidak bertanggung jawab atas kerugian yang melebihi nilai tersebut.</p>
+                        </div>
+
+                        <!-- Section 8: Penyelesaian Sengketa -->
+                        <div class="content-block" id="sengketa">
+                            <h2>8. Penyelesaian Sengketa</h2>
+                            
+                            <h3>8.1 Musyawarah</h3>
+                            <p>Setiap sengketa yang timbul dari atau terkait dengan Syarat dan Ketentuan ini akan diselesaikan terlebih dahulu melalui musyawarah untuk mufakat antara kedua belah pihak.</p>
+
+                            <h3>8.2 Mediasi</h3>
+                            <p>Apabila musyawarah tidak mencapai kesepakatan dalam waktu 30 (tiga puluh) hari, sengketa akan diselesaikan melalui mediasi yang disepakati bersama.</p>
+
+                            <h3>8.3 Arbitrase atau Pengadilan</h3>
+                            <p>Jika mediasi tidak berhasil, sengketa akan diselesaikan melalui Badan Arbitrase Nasional Indonesia (BANI) atau Pengadilan Negeri Jakarta sesuai dengan hukum yang berlaku di Indonesia.</p>
+                        </div>
+
+                        <!-- Section 9: Perubahan Ketentuan -->
+                        <div class="content-block" id="perubahan">
+                            <h2>9. Perubahan Ketentuan</h2>
+                            <p>Kami berhak mengubah, memodifikasi, atau memperbarui Syarat dan Ketentuan ini sewaktu-waktu. Perubahan akan diinformasikan melalui:</p>
+                            <ul>
+                                <li>Pengumuman di website resmi Bekenweb.</li>
+                                <li>Email ke alamat terdaftar pengguna.</li>
+                                <li>Notifikasi di dashboard layanan.</li>
+                            </ul>
+                            <p>Penggunaan layanan yang berkelanjutan setelah perubahan diumumkan dianggap sebagai persetujuan terhadap ketentuan baru. Jika Anda tidak menyetujui perubahan, Anda dapat menghentikan penggunaan layanan.</p>
+                        </div>
+
+                        <!-- Section 10: Kontak -->
+                        <div class="content-block" id="kontak">
+                            <h2>10. Kontak</h2>
+                            <p>Untuk pertanyaan atau informasi lebih lanjut mengenai Syarat dan Ketentuan ini, Anda dapat menghubungi kami melalui:</p>
+                            <ul>
+                                <li><strong>Email:</strong> info@bekenweb.com</li>
+                                <li><strong>WhatsApp:</strong> +62 812-3456-7890</li>
+                                <li><strong>Website:</strong> www.bekenweb.com</li>
+                                <li><strong>Alamat:</strong> Jl. Contoh Alamat No. 123, Kota, Indonesia</li>
+                            </ul>
+
+                            <div class="highlight-box">
+                                <div class="highlight-box-title">
+                                    <i class="bi bi-question-circle"></i>
+                                    <span>Ada Pertanyaan?</span>
+                                </div>
+                                <p>Jika Anda memiliki pertanyaan tentang Syarat dan Ketentuan ini, jangan ragu untuk menghubungi tim kami. Kami siap membantu Anda memahami ketentuan yang berlaku.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">Beken<span>web</span></div>
+                    <p class="footer-desc">
+                        Solusi website pendidikan terpercaya untuk sekolah, pesantren, dan madrasah di Indonesia.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Layanan</h5>
+                    <ul class="footer-links">
+                        <li><a href="ppdb.html">PPDB Online</a></li>
+                        <li><a href="spp.html">SPP Online</a></li>
+                        <li><a href="layanan.html">Website Sekolah</a></li>
+                        <li><a href="layanan.html">Website Pesantren</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Perusahaan</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="#">Testimonial</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Legal</h5>
+                    <ul class="footer-links">
+                        <li><a href="syarat-ketentuan.html" class="active">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Dokumentasi</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="footer-title">Kontak</h5>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@bekenweb.com">info@bekenweb.com</a></li>
+                        <li><a href="tel:+6281234567890">+62 812-3456-7890</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bekenweb. Made with care by Bekenweb Team.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        var navbar = document.querySelector('.navbar-custom');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Active state for sidebar navigation
+        var sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+        var contentBlocks = document.querySelectorAll('.content-block');
+
+        function updateActiveLink() {
+            var scrollPosition = window.scrollY + 150;
+
+            contentBlocks.forEach(function(block, index) {
+                var blockTop = block.offsetTop;
+                var blockBottom = blockTop + block.offsetHeight;
+                var blockId = block.getAttribute('id');
+
+                if (scrollPosition >= blockTop && scrollPosition < blockBottom) {
+                    sidebarLinks.forEach(function(link) {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + blockId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                var targetId = this.getAttribute('href');
+                var target = document.querySelector(targetId);
+                if (target) {
+                    var navHeight = navbar.offsetHeight;
+                    var targetPosition = target.offsetTop - navHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Print functionality
+        function printDocument() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
