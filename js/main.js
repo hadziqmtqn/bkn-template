@@ -1,3 +1,26 @@
+// Theme Toggle Implementation
+const themeToggle = () => {
+    const html = document.documentElement;
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+};
+
+// Initial theme setup (only if not already set)
+if (!document.documentElement.getAttribute('data-theme')) {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggles = document.querySelectorAll('.theme-toggle');
+    toggles.forEach(toggle => {
+        toggle.addEventListener('click', themeToggle);
+    });
+});
+
 // Navbar scroll effect
 const navbar = document.querySelector('.navbar-custom');
 window.addEventListener('scroll', function() {
