@@ -67,14 +67,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-brand {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--text-primary) !important;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
-.navbar-brand span {
-    color: var(--accent);
+.brand-logo {
+    height: 42px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 767px) {
+    .brand-logo {
+        height: 32px;
+    }
 }
 
 .nav-link {
@@ -971,34 +980,38 @@ h1, h2, h3, h4, h5, h6 {
 
 .cta-title {
     font-size: clamp(2rem, 4vw, 2.8rem);
-    color: var(--bg-primary);
+    color: #ffffff;
     margin-bottom: 1rem;
+    font-weight: 700;
 }
 
 .cta-desc {
-    color: var(--bg-secondary);
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.15rem;
+    margin-bottom: 2.5rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .btn-cta {
-    background: var(--bg-primary);
-    color: var(--text-primary);
+    background: #ffffff;
+    color: var(--accent);
     border: none;
-    padding: 1rem 2.5rem;
+    padding: 1.1rem 3rem;
     border-radius: 50px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.1rem;
     transition: all 0.3s ease;
     text-decoration: none;
     display: inline-block;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .btn-cta:hover {
-    background: var(--bg-secondary);
+    background: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
     color: var(--accent);
 }
 
