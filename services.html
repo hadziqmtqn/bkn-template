@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan - Bekenweb</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="style/main.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Beken<span>web</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ppdb.html">PPDB Online</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="spp.html">SPP Online</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Layanan Lainnya</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Kontak</a>
+                    </li>
+                </ul>
+                <a href="index.html#contact" class="btn btn-nav">Hubungi Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-bg">
+            <div class="page-header-gradient page-header-gradient-1"></div>
+            <div class="page-header-gradient page-header-gradient-2"></div>
+        </div>
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">Layanan <span class="highlight">Lainnya</span></h1>
+                <p class="page-desc">
+                    Berbagai layanan digital tambahan untuk melengkapi kebutuhan website dan sistem informasi sekolah Anda.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="row g-4" id="servicesContainer">
+                <!-- Cards will be rendered by JavaScript -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination-wrapper">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination" id="pagination">
+                        <!-- Pagination will be rendered by JavaScript -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Detail Modal -->
+    <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="serviceModalLabel">Detail Layanan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Modal content will be rendered by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">Beken<span>web</span></div>
+                    <p class="footer-desc">
+                        Solusi website pendidikan terpercaya untuk sekolah, pesantren, dan madrasah di Indonesia.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Layanan</h5>
+                    <ul class="footer-links">
+                        <li><a href="ppdb-online.html">PPDB Online</a></li>
+                        <li><a href="spp-online.html">SPP Online</a></li>
+                        <li><a href="#">Website Sekolah</a></li>
+                        <li><a href="#">Website Pesantren</a></li>
+                        <li><a href="services.html">Layanan Lainnya</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Perusahaan</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="#">Testimonial</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Bantuan</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Dokumentasi</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="footer-title">Kontak</h5>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@bekenweb.com">info@bekenweb.com</a></li>
+                        <li><a href="tel:+6281234567890">+62 812-3456-7890</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bekenweb. Made with care by Bekenweb Team.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Services Data
+        var servicesData = [
+            {
+                id: 1,
+                title: "Website Sekolah",
+                icon: "bi-globe",
+                desc: "Website profesional untuk sekolah dengan desain modern dan fitur lengkap. Tampilan responsive dan mudah dikelola.",
+                tags: ["Website", "CMS WordPress"],
+                price: "750.000",
+                priceOriginal: "1.000.000",
+                period: "/ tahun",
+                fullDesc: "Website sekolah profesional dengan sistem CMS WordPress yang memudahkan pengelolaan konten. Dilengkapi dengan fitur berita, profil sekolah, galeri kegiatan, dan informasi akademik. Desain modern dan responsive untuk semua perangkat.",
+                features: [
+                    "Desain custom sesuai identitas sekolah",
+                    "Halaman profil, berita, galeri, kontak",
+                    "Sistem berita dan pengumuman",
+                    "Galeri foto dan video kegiatan",
+                    "Halaman pendaftaran online",
+                    "Integrasi media sosial",
+                    "Panel admin yang mudah digunakan",
+                    "SSL gratis untuk keamanan",
+                    "Support dan maintenance"
+                ]
+            },
+            {
+                id: 2,
+                title: "Website Pesantren",
+                icon: "bi-moon-stars",
+                desc: "Website khusus pesantren dengan nuansa islami. Fitur profil, program pendidikan, dan pendaftaran santri online.",
+                tags: ["Website", "Pesantren"],
+                price: "850.000",
+                priceOriginal: "1.100.000",
+                period: "/ tahun",
+                fullDesc: "Website pesantren dengan desain bernuansa islami yang elegan. Cocok untuk pondok pesantren modern maupun salaf. Dilengkapi fitur lengkap untuk informasi program pendidikan, kyai, santri, dan kegiatan pesantren.",
+                features: [
+                    "Desain bernuansa islami",
+                    "Profil kyai dan asatidz",
+                    "Program pendidikan dan kurikulum",
+                    "Jadwal kegiatan dan kajian",
+                    "Pendaftaran santri online",
+                    "Galeri kegiatan pesantren",
+                    "Halaman donasi dan infaq",
+                    "Al-Quran online (opsional)",
+                    "Support dan maintenance"
+                ]
+            },
+            {
+                id: 3,
+                title: "Website Madrasah",
+                icon: "bi-book",
+                desc: "Website untuk madrasah ibtidaiyah, tsanawiyah, dan aliyah. Desain menarik dengan nuansa pendidikan islam.",
+                tags: ["Website", "Madrasah"],
+                price: "700.000",
+                priceOriginal: "900.000",
+                period: "/ tahun",
+                fullDesc: "Website khusus untuk madrasah dengan kombinasi nuansa pendidikan dan islami. Tersedia untuk MI, MTs, dan MA. Dilengkapi fitur akademik dan informasi kegiatan sekolah.",
+                features: [
+                    "Desain bernuansa pendidikan islam",
+                    "Profil madrasah dan guru",
+                    "Informasi ekstrakurikuler",
+                    "Kalender akademik",
+                    "Berita dan pengumuman",
+                    "Galeri kegiatan",
+                    "Halaman kontak dan lokasi",
+                    "Responsive di semua device",
+                    "Panel admin mudah digunakan"
+                ]
+            },
+            {
+                id: 4,
+                title: "Hosting Sekolah",
+                icon: "bi-hdd-stack",
+                desc: "Layanan hosting khusus untuk website sekolah dengan server Indonesia dan performa tinggi.",
+                tags: ["Hosting", "Server ID"],
+                price: "300.000",
+                priceOriginal: "400.000",
+                period: "/ tahun",
+                fullDesc: "Layanan hosting premium dengan server Indonesia untuk website sekolah Anda. Performa tinggi dengan uptime 99.9% dan dukungan teknis 24/7.",
+                features: [
+                    "Server Indonesia",
+                    "SSD Storage cepat",
+                    "Unlimited bandwidth",
+                    "SSL Gratis",
+                    "Daily backup otomatis",
+                    "cPanel kontrol panel",
+                    "Email @namasekolah.sch.id",
+                    "Support 24/7",
+                    "Anti DDOS protection"
+                ]
+            },
+            {
+                id: 5,
+                title: "Domain Sekolah",
+                icon: "bi-globe2",
+                desc: "Registrasi domain .sch.id untuk sekolah dan domain lainnya dengan harga terjangkau.",
+                tags: ["Domain", ".sch.id"],
+                price: "150.000",
+                priceOriginal: "200.000",
+                period: "/ tahun",
+                fullDesc: "Layanan registrasi dan perpanjangan domain untuk website sekolah. Tersedia berbagai ekstensi domain termasuk .sch.id khusus sekolah.",
+                features: [
+                    "Domain .sch.id resmi",
+                    "Domain .com, .net, .org",
+                    "Domain .id Indonesia",
+                    "Privacy protection",
+                    "DNS management",
+                    "Auto renew reminder",
+                    "Transfer domain masuk",
+                    "WHOIS privacy",
+                    "Support 24/7"
+                ]
+            },
+            {
+                id: 6,
+                title: "E-Learning Sekolah",
+                icon: "bi-laptop",
+                desc: "Platform e-learning untuk sekolah dengan fitur kelas online, ujian, dan manajemen nilai.",
+                tags: ["E-Learning", "LMS"],
+                price: "1.200.000",
+                priceOriginal: "1.500.000",
+                period: "/ tahun",
+                fullDesc: "Sistem Learning Management System (LMS) untuk pembelajaran online. Fitur lengkap untuk guru dan siswa dengan antarmuka yang mudah digunakan.",
+                features: [
+                    "Kelas virtual online",
+                    "Upload materi pembelajaran",
+                    "Ujian online otomatis",
+                    "Bank soal terintegrasi",
+                    "Manajemen nilai siswa",
+                    "Absensi digital",
+                    "Forum diskusi",
+                    "Tugas dan PR online",
+                    "Laporan progress belajar"
+                ]
+            },
+            {
+                id: 7,
+                title: "Sistem Perpustakaan",
+                icon: "bi-journal-bookmark",
+                desc: "Sistem informasi perpustakaan digital untuk manajemen buku dan peminjaman online.",
+                tags: ["Perpustakaan", "Digital"],
+                price: "800.000",
+                priceOriginal: "1.000.000",
+                period: "/ tahun",
+                fullDesc: "Sistem manajemen perpustakaan digital untuk sekolah. Memudahkan pengelolaan koleksi buku, peminjaman, dan pencarian buku secara online.",
+                features: [
+                    "Katalog buku digital",
+                    "Sistem peminjaman online",
+                    "QR Code untuk buku",
+                    "Pencarian buku cepat",
+                    "Laporan peminjaman",
+                    "Notifikasi jatuh tempo",
+                    "Manajemen anggota",
+                    "Statistik perpustakaan",
+                    "E-book reader (opsional)"
+                ]
+            },
+            {
+                id: 8,
+                title: "Sistem Absensi Digital",
+                icon: "bi-calendar-check",
+                desc: "Sistem absensi digital untuk siswa dan guru dengan laporan otomatis dan integrasi WhatsApp.",
+                tags: ["Absensi", "Digital"],
+                price: "600.000",
+                priceOriginal: "800.000",
+                period: "/ tahun",
+                fullDesc: "Sistem absensi digital modern untuk mencatat kehadiran siswa dan guru. Dilengkapi notifikasi ke orang tua dan laporan otomatis.",
+                features: [
+                    "Absensi via QR Code",
+                    "Absensi fingerprint",
+                    "Notifikasi ke orang tua",
+                    "Laporan kehadiran otomatis",
+                    "Rekap bulanan & tahunan",
+                    "Dashboard monitoring",
+                    "Integrasi WhatsApp",
+                    "Analisis ketidakhadiran",
+                    "Export ke Excel/PDF"
+                ]
+            },
+            {
+                id: 9,
+                title: "Website Yayasan",
+                icon: "bi-building",
+                desc: "Website untuk yayasan pendidikan dengan fitur profil, program, dan donasi online.",
+                tags: ["Website", "Yayasan"],
+                price: "900.000",
+                priceOriginal: "1.200.000",
+                period: "/ tahun",
+                fullDesc: "Website profesional untuk yayasan pendidikan dengan fitur lengkap. Termasuk halaman donasi online untuk penggalangan dana yayasan.",
+                features: [
+                    "Profil yayasan lengkap",
+                    "Program dan kegiatan",
+                    "Donasi online terintegrasi",
+                    "Laporan penggunaan dana",
+                    "Galeri kegiatan",
+                    "Berita dan artikel",
+                    "Daftar sekolah binaan",
+                    "Formulir kontak",
+                    "Newsletter subscription"
+                ]
+            },
+            {
+                id: 10,
+                title: "Sistem Inventaris",
+                icon: "bi-box-seam",
+                desc: "Sistem manajemen inventaris sekolah untuk pencatatan aset dan barang dengan barcode.",
+                tags: ["Inventaris", "Aset"],
+                price: "550.000",
+                priceOriginal: "700.000",
+                period: "/ tahun",
+                fullDesc: "Sistem manajemen inventaris dan aset sekolah. Pencatatan barang masuk, keluar, dan pemeliharaan dengan mudah menggunakan barcode.",
+                features: [
+                    "Pencatatan barang masuk/keluar",
+                    "Label barcode otomatis",
+                    "Tracking lokasi barang",
+                    "Jadwal pemeliharaan",
+                    "Laporan inventaris",
+                    "Penyusutan barang",
+                    "Kategori dan grouping",
+                    "Notifikasi stok minimum",
+                    "Export laporan lengkap"
+                ]
+            },
+            {
+                id: 11,
+                title: "Sistem Keuangan Sekolah",
+                icon: "bi-cash-coin",
+                desc: "Sistem akuntansi dan keuangan sekolah untuk pengelolaan anggaran dan laporan keuangan.",
+                tags: ["Keuangan", "Akuntansi"],
+                price: "1.000.000",
+                priceOriginal: "1.300.000",
+                period: "/ tahun",
+                fullDesc: "Sistem akuntansi terintegrasi untuk pengelolaan keuangan sekolah. Fitur lengkap dari pencatatan transaksi hingga laporan keuangan standar.",
+                features: [
+                    "Pencatatan transaksi harian",
+                    "Manajemen anggaran",
+                    "Laporan keuangan standar",
+                    "Laporan realisasi anggaran",
+                    "Multi user dengan role",
+                    "Backup data otomatis",
+                    "Neraca dan laba rugi",
+                    "Integrasi dengan SPP Online",
+                    "Audit trail lengkap"
+                ]
+            },
+            {
+                id: 12,
+                title: "Maintenance Website",
+                icon: "bi-tools",
+                desc: "Layanan maintenance dan support website sekolah untuk update konten dan teknis.",
+                tags: ["Maintenance", "Support"],
+                price: "200.000",
+                priceOriginal: "300.000",
+                period: "/ bulan",
+                fullDesc: "Layanan maintenance bulanan untuk website sekolah Anda. Termasuk update konten, backup rutin, dan dukungan teknis.",
+                features: [
+                    "Update konten website",
+                    "Backup rutin mingguan",
+                    "Security monitoring",
+                    "Performance optimization",
+                    "Bug fixing",
+                    "Support via WhatsApp",
+                    "Minor design changes",
+                    "Plugin updates",
+                    "Monthly report"
+                ]
+            }
+        ];
+
+        // Pagination settings
+        var itemsPerPage = 6;
+        var currentPage = 1;
+        var totalPages = Math.ceil(servicesData.length / itemsPerPage);
+
+        // Render services
+        function renderServices() {
+            var container = document.getElementById('servicesContainer');
+            var start = (currentPage - 1) * itemsPerPage;
+            var end = start + itemsPerPage;
+            var currentServices = servicesData.slice(start, end);
+
+            if (currentServices.length === 0) {
+                container.innerHTML = '<div class="col-12"><div class="no-results"><div class="no-results-icon"><i class="bi bi-inbox"></i></div><h4 class="no-results-title">Tidak Ada Layanan</h4><p class="no-results-desc">Tidak ada layanan yang tersedia saat ini.</p></div></div>';
+                return;
+            }
+
+            var html = '';
+            currentServices.forEach(function(service) {
+                html += '<div class="col-lg-4 col-md-6">' +
+                    '<div class="service-card" onclick="openModal(' + service.id + ')">' +
+                        '<div class="service-icon">' +
+                            '<i class="bi ' + service.icon + '"></i>' +
+                        '</div>' +
+                        '<h4 class="service-title">' + service.title + '</h4>' +
+                        '<p class="service-desc">' + service.desc + '</p>' +
+                        '<div class="service-tags">';
+                
+                service.tags.forEach(function(tag) {
+                    html += '<span class="service-tag">' + tag + '</span>';
+                });
+                
+                html += '</div>' +
+                        '<div class="service-price">' +
+                            '<span class="service-price-label">Mulai dari</span>' +
+                            '<span class="service-price-value">Rp ' + service.price + '</span>' +
+                            '<span class="service-price-period">' + service.period + '</span>' +
+                        '</div>' +
+                        '<button class="btn-service">' +
+                            '<i class="bi bi-eye"></i>' +
+                            'Lihat Detail' +
+                        '</button>' +
+                    '</div>' +
+                '</div>';
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Render pagination
+        function renderPagination() {
+            var pagination = document.getElementById('pagination');
+            var html = '';
+
+            // Previous button
+            html += '<li class="page-item ' + (currentPage === 1 ? 'disabled' : '') + '">' +
+                '<a class="page-link" href="#" onclick="changePage(' + (currentPage - 1) + '); return false;" aria-label="Previous">' +
+                    '<i class="bi bi-chevron-left"></i>' +
+                '</a>' +
+            '</li>';
+
+            // Page numbers
+            for (var i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                    html += '<li class="page-item ' + (i === currentPage ? 'active' : '') + '">' +
+                        '<a class="page-link" href="#" onclick="changePage(' + i + '); return false;">' + i + '</a>' +
+                    '</li>';
+                } else if (i === currentPage - 2 || i === currentPage + 2) {
+                    html += '<li class="page-item disabled">' +
+                        '<a class="page-link" href="#">...</a>' +
+                    '</li>';
+                }
+            }
+
+            // Next button
+            html += '<li class="page-item ' + (currentPage === totalPages ? 'disabled' : '') + '">' +
+                '<a class="page-link" href="#" onclick="changePage(' + (currentPage + 1) + '); return false;" aria-label="Next">' +
+                    '<i class="bi bi-chevron-right"></i>' +
+                '</a>' +
+            '</li>';
+
+            pagination.innerHTML = html;
+        }
+
+        // Change page
+        function changePage(page) {
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            renderServices();
+            renderPagination();
+            window.scrollTo({ top: 400, behavior: 'smooth' });
+        }
+
+        // Open modal with service details
+        function openModal(serviceId) {
+            var service = servicesData.find(function(s) { return s.id === serviceId; });
+            if (!service) return;
+
+            var modalBody = document.getElementById('modalBody');
+            var modalTitle = document.getElementById('serviceModalLabel');
+            
+            modalTitle.textContent = service.title;
+
+            var featuresHtml = '';
+            service.features.forEach(function(feature) {
+                featuresHtml += '<li><i class="bi bi-check-circle-fill"></i>' + feature + '</li>';
+            });
+
+            modalBody.innerHTML = 
+                '<div class="modal-service-icon">' +
+                    '<i class="bi ' + service.icon + '"></i>' +
+                '</div>' +
+                '<p class="modal-service-desc">' + service.fullDesc + '</p>' +
+                '<div class="modal-features">' +
+                    '<h5 class="modal-features-title">Fitur yang Termasuk:</h5>' +
+                    '<ul class="modal-feature-list">' + featuresHtml + '</ul>' +
+                '</div>' +
+                '<div class="modal-price-box">' +
+                    '<div class="modal-price-label">Harga Mulai dari</div>' +
+                    '<div class="modal-price-value">Rp ' + service.price + '</div>' +
+                    '<div class="modal-price-period">' + service.period + '</div>' +
+                '</div>' +
+                '<div class="modal-buttons">' +
+                    '<a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20layanan%20' + encodeURIComponent(service.title) + '" class="btn-modal-primary" target="_blank">' +
+                        '<i class="bi bi-whatsapp"></i>Pesan via WhatsApp' +
+                    '</a>' +
+                    '<button type="button" class="btn-modal-secondary" data-bs-dismiss="modal">' +
+                        '<i class="bi bi-x-lg"></i>Tutup' +
+                    '</button>' +
+                '</div>';
+
+            var modal = new bootstrap.Modal(document.getElementById('serviceModal'));
+            modal.show();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderServices();
+            renderPagination();
+        });
+
+        // Navbar scroll effect
+        var navbar = document.querySelector('.navbar-custom');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
