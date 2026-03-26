@@ -41,3 +41,32 @@ if (contactForm) {
         }, 3000);
     });
 }
+
+// Countdown Timer
+function startCountdown() {
+    var endDate = new Date();
+    endDate.setDate(endDate.getDate() + 7);
+
+    function updateCountdown() {
+        var now = new Date();
+        var diff = endDate - now;
+
+        if (diff > 0) {
+            var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.querySelectorAll('.countdown-timer').forEach(function(timer) {
+                var items = timer.querySelectorAll('.countdown-item');
+                if (items[0]) items[0].querySelector('.countdown-number').textContent = String(days).padStart(2, '0');
+                if (items[1]) items[1].querySelector('.countdown-number').textContent = String(hours).padStart(2, '0');
+                if (items[2]) items[2].querySelector('.countdown-number').textContent = String(minutes).padStart(2, '0');
+            });
+        }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+}
+
+startCountdown();
