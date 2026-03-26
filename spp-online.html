@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPP Online - Bekenweb</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0f1a;
+            --bg-secondary: #111827;
+            --bg-card: #1a2332;
+            --accent: #00d4aa;
+            --accent-secondary: #0891b2;
+            --accent-orange: #f97316;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: #2d3a4f;
+            --gradient-1: linear-gradient(135deg, #00d4aa 0%, #0891b2 100%);
+            --gradient-orange: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background: rgba(10, 15, 26, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-custom.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(10, 15, 26, 0.95);
+        }
+
+        .navbar-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-primary) !important;
+        }
+
+        .navbar-brand span {
+            color: var(--accent);
+        }
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent) !important;
+        }
+
+        .btn-nav {
+            background: var(--gradient-1);
+            color: var(--bg-primary) !important;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 170, 0.4);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 160px 0 80px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .hero-gradient {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.4;
+        }
+
+        .hero-gradient-1 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            top: -400px;
+            right: -200px;
+        }
+
+        .hero-gradient-2 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-orange) 0%, transparent 70%);
+            bottom: -300px;
+            left: -200px;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 212, 170, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 170, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title .highlight {
+            background: var(--gradient-orange);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .hero-feature-item i {
+            color: var(--accent);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-custom {
+            background: var(--gradient-1);
+            color: var(--bg-primary);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 212, 170, 0.4);
+            color: var(--bg-primary);
+        }
+
+        .btn-secondary-custom {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-secondary-custom:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(0, 212, 170, 0.05);
+        }
+
+        /* Hero Mockup */
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-mockup {
+            position: relative;
+            width: 100%;
+            max-width: 550px;
+        }
+
+        .mockup-screen {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 1.25rem;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .mockup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mockup-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .mockup-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-orange);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mockup-logo-icon i {
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .mockup-logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .mockup-status {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .mockup-content {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .mockup-payment-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .mockup-payment-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .mockup-payment-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .mockup-student-info {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .mockup-student-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            font-size: 0.85rem;
+        }
+
+        .mockup-student-label {
+            color: var(--text-muted);
+        }
+
+        .mockup-student-value {
+            font-weight: 600;
+        }
+
+        .mockup-amount {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 212, 170, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .mockup-amount-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .mockup-amount-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .mockup-payment-btn {
+            background: var(--gradient-1);
+            color: var(--bg-primary);
+            border: none;
+            padding: 0.875rem;
+            border-radius: 10px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        /* Device Mockups */
+        .device-mockup {
+            position: absolute;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 0.75rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .device-mockup-1 {
+            width: 150px;
+            bottom: -20px;
+            left: -40px;
+        }
+
+        .device-mockup-2 {
+            width: 140px;
+            top: 20px;
+            right: -50px;
+        }
+
+        .device-screen {
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            padding: 0.75rem;
+            min-height: 180px;
+        }
+
+        .device-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .device-title {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        .device-badge {
+            font-size: 0.6rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 50px;
+        }
+
+        .device-badge.success {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+        }
+
+        .device-stat {
+            text-align: center;
+            padding: 0.5rem;
+            background: var(--bg-card);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .device-stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .device-stat-label {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .benefit-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--gradient-orange);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(249, 115, 22, 0.3);
+        }
+
+        .benefit-card:hover::before {
+            height: 100%;
+        }
+
+        .benefit-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(249, 115, 22, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover .benefit-icon {
+            background: var(--gradient-orange);
+        }
+
+        .benefit-icon i {
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover .benefit-icon i {
+            color: white;
+        }
+
+        .benefit-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .benefit-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 100px 0;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 170, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(0, 212, 170, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--gradient-1);
+        }
+
+        .feature-icon i {
+            font-size: 1.75rem;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon i {
+            color: var(--bg-primary);
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2.5rem;
+            height: 100%;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent-orange);
+            transform: scale(1.02);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Best Seller';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-orange);
+            color: white;
+            padding: 0.35rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.02) translateY(-5px);
+        }
+
+        .pricing-name {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-price {
+            margin-bottom: 1.5rem;
+        }
+
+        .price-original {
+            color: var(--text-muted);
+            text-decoration: line-through;
+            font-size: 1rem;
+        }
+
+        .price-current {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .price-period {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .countdown-box {
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            color: var(--accent-orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .countdown-item {
+            background: var(--bg-secondary);
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            min-width: 50px;
+        }
+
+        .countdown-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .countdown-text {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features i {
+            color: var(--accent);
+            margin-top: 0.2rem;
+        }
+
+        .btn-pricing {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        /* Screenshot Section */
+        .screenshot-section {
+            padding: 100px 0;
+        }
+
+        .screenshot-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .screenshot-device {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 1rem;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .screenshot-laptop {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .screenshot-mobile {
+            width: 200px;
+            position: absolute;
+            bottom: -30px;
+            right: 5%;
+        }
+
+        .screenshot-screen {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .screenshot-content {
+            padding: 1.5rem;
+        }
+
+        .screenshot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .screenshot-title {
+            font-size: 1.1rem;
+        }
+
+        .screenshot-table {
+            width: 100%;
+        }
+
+        .screenshot-table th {
+            text-align: left;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .screenshot-table td {
+            padding: 0.75rem 0;
+            font-size: 0.85rem;
+            border-bottom: 1px solid rgba(45, 58, 79, 0.5);
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .status-badge.success {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+        }
+
+        .status-badge.pending {
+            background: rgba(234, 179, 8, 0.1);
+            color: #eab308;
+        }
+
+        .status-badge.failed {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: var(--gradient-orange);
+            position: relative;
+        }
+
+        .cta-content {
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-desc {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-cta {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-cta:hover {
+            background: white;
+            color: var(--accent-orange);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0 30px;
+        }
+
+        .footer-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand span {
+            color: var(--accent);
+        }
+
+        .footer-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            margin-top: 40px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .device-mockup,
+            .screenshot-mobile {
+                display: none;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .hero-section {
+                text-align: center;
+                padding-top: 140px;
+            }
+
+            .hero-desc,
+            .hero-features,
+            .hero-buttons {
+                justify-content: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-features {
+                display: inline-flex;
+            }
+
+            .hero-image-wrapper {
+                margin-top: 4rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Mobile Nav */
+        .navbar-toggler {
+            border: 1px solid var(--border-color);
+            padding: 0.5rem;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(241, 245, 249, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .navbar-collapse {
+            background: var(--bg-card);
+            margin-top: 1rem;
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Beken<span>web</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ppdb.html">PPDB Online</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">SPP Online</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Kontak</a>
+                    </li>
+                </ul>
+                <a href="#pricing" class="btn btn-nav">Daftar Sekarang</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg">
+            <div class="hero-gradient hero-gradient-1"></div>
+            <div class="hero-gradient hero-gradient-2"></div>
+            <div class="hero-grid"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <i class="bi bi-credit-card"></i>
+                            Sistem Pembayaran SPP Online
+                        </div>
+                        <h1 class="hero-title">
+                            Optimalkan <span class="highlight">Administrasi Sekolah</span> dengan SPP Online
+                        </h1>
+                        <p class="hero-desc">
+                            Sistem pembayaran SPP online yang modern, aman, dan transparan. Kelola pembayaran ribuan siswa dengan mudah dan efisien dalam satu platform terintegrasi.
+                        </p>
+                        <div class="hero-features">
+                            <div class="hero-feature-item">
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>Pembayaran 24/7</span>
+                            </div>
+                            <div class="hero-feature-item">
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>Laporan Realtime</span>
+                            </div>
+                            <div class="hero-feature-item">
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>Multi Payment</span>
+                            </div>
+                        </div>
+                        <div class="hero-buttons">
+                            <a href="#pricing" class="btn btn-primary-custom">
+                                Lihat Harga Promo
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                            <a href="#features" class="btn btn-secondary-custom">
+                                <i class="bi bi-play-circle"></i>
+                                Lihat Fitur
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="hero-image-wrapper">
+                        <div class="hero-mockup">
+                            <div class="mockup-screen">
+                                <div class="mockup-header">
+                                    <div class="mockup-logo">
+                                        <div class="mockup-logo-icon">
+                                            <i class="bi bi-cash-stack"></i>
+                                        </div>
+                                        <span class="mockup-logo-text">Pembayaran SPP</span>
+                                    </div>
+                                    <div class="mockup-status">Aktif</div>
+                                </div>
+                                <div class="mockup-content">
+                                    <div class="mockup-payment-header">
+                                        <h5 class="mockup-payment-title">Pembayaran SPP Bulanan</h5>
+                                        <p class="mockup-payment-subtitle">SMA Negeri 1 Contoh</p>
+                                    </div>
+                                    <div class="mockup-student-info">
+                                        <div class="mockup-student-row">
+                                            <span class="mockup-student-label">Nama Siswa</span>
+                                            <span class="mockup-student-value">Ahmad Fauzi</span>
+                                        </div>
+                                        <div class="mockup-student-row">
+                                            <span class="mockup-student-label">Kelas</span>
+                                            <span class="mockup-student-value">XII IPA 1</span>
+                                        </div>
+                                        <div class="mockup-student-row">
+                                            <span class="mockup-student-label">Periode</span>
+                                            <span class="mockup-student-value">Januari 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="mockup-amount">
+                                        <div class="mockup-amount-label">Total Pembayaran</div>
+                                        <div class="mockup-amount-value">Rp 350.000</div>
+                                    </div>
+                                    <button class="mockup-payment-btn">
+                                        <i class="bi bi-credit-card me-2"></i>Bayar Sekarang
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Device Mockups -->
+                        <div class="device-mockup device-mockup-1">
+                            <div class="device-screen">
+                                <div class="device-header">
+                                    <span class="device-title">Pembayaran Bulan Ini</span>
+                                </div>
+                                <div class="device-stat">
+                                    <div class="device-stat-value">98%</div>
+                                    <div class="device-stat-label">Sudah Bayar</div>
+                                </div>
+                                <div class="device-stat">
+                                    <div class="device-stat-value">Rp 45.5M</div>
+                                    <div class="device-stat-label">Total Transaksi</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="device-mockup device-mockup-2">
+                            <div class="device-screen">
+                                <div class="device-header">
+                                    <span class="device-title">Status Kas</span>
+                                    <span class="device-badge success">Aktif</span>
+                                </div>
+                                <div class="device-stat">
+                                    <div class="device-stat-value">1,248</div>
+                                    <div class="device-stat-label">Siswa Aktif</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="bi bi-question-circle"></i>
+                    Mengapa SPP Online?
+                </div>
+                <h2 class="section-title">4 Keunggulan SPP Online</h2>
+                <p class="section-desc">
+                    Transformasi digital proses administrasi pembayaran menjadi lebih efisien dan transparan.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-number">01</div>
+                        <div class="benefit-icon">
+                            <i class="bi bi-speedometer2"></i>
+                        </div>
+                        <h4 class="benefit-title">Efisiensi Waktu</h4>
+                        <p class="benefit-desc">Proses pembayaran lebih cepat tanpa antrian dan administrasi manual yang ribet.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-number">02</div>
+                        <div class="benefit-icon">
+                            <i class="bi bi-shield-lock"></i>
+                        </div>
+                        <h4 class="benefit-title">Keamanan Terjamin</h4>
+                        <p class="benefit-desc">Sistem keamanan terenkripsi untuk melindungi data transaksi dan keuangan sekolah.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-number">03</div>
+                        <div class="benefit-icon">
+                            <i class="bi bi-file-earmark-bar-graph"></i>
+                        </div>
+                        <h4 class="benefit-title">Laporan Otomatis</h4>
+                        <p class="benefit-desc">Laporan keuangan otomatis dan realtime yang dapat diakses kapan saja.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-number">04</div>
+                        <div class="benefit-icon">
+                            <i class="bi bi-eye"></i>
+                        </div>
+                        <h4 class="benefit-title">Transparansi</h4>
+                        <p class="benefit-desc">Orang tua dapat memantau riwayat pembayaran dan status keuangan siswa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="bi bi-stars"></i>
+                    Fitur Unggulan
+                </div>
+                <h2 class="section-title">Fitur Lengkap SPP Online</h2>
+                <p class="section-desc">
+                    Dilengkapi berbagai fitur canggih untuk memudahkan pengelolaan keuangan sekolah.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-credit-card-2-front"></i>
+                        </div>
+                        <h4 class="feature-title">Multi Metode Pembayaran</h4>
+                        <p class="feature-desc">Mendukung berbagai metode pembayaran: Transfer Bank, E-Wallet (GoPay, OVO, Dana), QRIS, dan Minimarket.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-receipt"></i>
+                        </div>
+                        <h4 class="feature-title">Kuitansi Digital Otomatis</h4>
+                        <p class="feature-desc">Kuitansi pembayaran otomatis tergenerate dan dapat diunduh atau dikirim via email/WhatsApp.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h4 class="feature-title">Dashboard Laporan Keuangan</h4>
+                        <p class="feature-desc">Dashboard interaktif untuk monitoring pemasukan, tunggakan, dan laporan keuangan lengkap.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-bell"></i>
+                        </div>
+                        <h4 class="feature-title">Notifikasi Otomatis</h4>
+                        <p class="feature-desc">Pengingat pembayaran otomatis via WhatsApp dan email untuk mengurangi tunggakan.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-person-badge"></i>
+                        </div>
+                        <h4 class="feature-title">Akses Orang Tua</h4>
+                        <p class="feature-desc">Portal orang tua untuk melihat riwayat pembayaran, tagihan, dan status keuangan siswa.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-download"></i>
+                        </div>
+                        <h4 class="feature-title">Export Data & Laporan</h4>
+                        <p class="feature-desc">Fitur export data ke Excel/PDF untuk keperluan administrasi dan audit keuangan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="bi bi-tag"></i>
+                    Harga Promo
+                </div>
+                <h2 class="section-title">Pilih Paket SPP Online</h2>
+                <p class="section-desc">
+                    Harga terjangkau dengan fitur lengkap untuk kebutuhan sekolah Anda.
+                </p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-5 col-md-6">
+                    <div class="pricing-card">
+                        <h3 class="pricing-name">Basic Plan</h3>
+                        <p class="pricing-desc">Cocok untuk sekolah dengan jumlah siswa sedang</p>
+                        <div class="pricing-price">
+                            <div class="price-original">Rp 950.000</div>
+                            <div class="price-current">Rp 760.000</div>
+                            <div class="price-period">/ tahun</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-label">Promo Berakhir Dalam</div>
+                            <div class="countdown-timer">
+                                <div class="countdown-item">
+                                    <div class="countdown-number">07</div>
+                                    <div class="countdown-text">Hari</div>
+                                </div>
+                                <div class="countdown-item">
+                                    <div class="countdown-number">12</div>
+                                    <div class="countdown-text">Jam</div>
+                                </div>
+                                <div class="countdown-item">
+                                    <div class="countdown-number">45</div>
+                                    <div class="countdown-text">Menit</div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="bi bi-check-circle-fill"></i> Maksimal 500 Siswa</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Multi Metode Pembayaran</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Kuitansi Digital</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Dashboard Admin</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Laporan Keuangan</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Notifikasi WhatsApp</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Support Email & WhatsApp</li>
+                        </ul>
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20paket%20SPP%20Online%20Basic" class="btn btn-secondary-custom btn-pricing">Pilih Paket</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6">
+                    <div class="pricing-card featured">
+                        <h3 class="pricing-name">Professional</h3>
+                        <p class="pricing-desc">Pilihan terbaik untuk sekolah besar</p>
+                        <div class="pricing-price">
+                            <div class="price-original">Rp 1.500.000</div>
+                            <div class="price-current">Rp 1.100.000</div>
+                            <div class="price-period">/ tahun</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-label">Promo Berakhir Dalam</div>
+                            <div class="countdown-timer">
+                                <div class="countdown-item">
+                                    <div class="countdown-number">07</div>
+                                    <div class="countdown-text">Hari</div>
+                                </div>
+                                <div class="countdown-item">
+                                    <div class="countdown-number">12</div>
+                                    <div class="countdown-text">Jam</div>
+                                </div>
+                                <div class="countdown-item">
+                                    <div class="countdown-number">45</div>
+                                    <div class="countdown-text">Menit</div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="bi bi-check-circle-fill"></i> Unlimited Siswa</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Semua Metode Pembayaran</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Portal Orang Tua</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Laporan Lengkap + Grafik</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Export Excel/PDF</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Notifikasi Otomatis</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Priority Support 24/7</li>
+                        </ul>
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20paket%20SPP%20Online%20Professional" class="btn btn-primary-custom btn-pricing">Pilih Paket</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshot Section -->
+    <section class="screenshot-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="bi bi-display"></i>
+                    Tampilan Sistem
+                </div>
+                <h2 class="section-title">Tampilan Dashboard Admin</h2>
+                <p class="section-desc">
+                    Antarmuka yang mudah digunakan untuk mengelola seluruh transaksi SPP.
+                </p>
+            </div>
+            <div class="screenshot-wrapper">
+                <div class="screenshot-device screenshot-laptop">
+                    <div class="screenshot-screen">
+                        <div class="screenshot-content">
+                            <div class="screenshot-header">
+                                <h5 class="screenshot-title">Riwayat Pembayaran SPP - Januari 2024</h5>
+                                <span class="status-badge success">Rp 45.500.000</span>
+                            </div>
+                            <table class="screenshot-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Nama Siswa</th>
+                                        <th>Kelas</th>
+                                        <th>Jumlah</th>
+                                        <th>Metode</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>15 Jan 2024</td>
+                                        <td>Ahmad Fauzi</td>
+                                        <td>XII IPA 1</td>
+                                        <td>Rp 350.000</td>
+                                        <td>Transfer BCA</td>
+                                        <td><span class="status-badge success">Lunas</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>15 Jan 2024</td>
+                                        <td>Siti Nurhaliza</td>
+                                        <td>XI IPS 2</td>
+                                        <td>Rp 350.000</td>
+                                        <td>GoPay</td>
+                                        <td><span class="status-badge success">Lunas</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>14 Jan 2024</td>
+                                        <td>Budi Santoso</td>
+                                        <td>X IPA 3</td>
+                                        <td>Rp 350.000</td>
+                                        <td>QRIS</td>
+                                        <td><span class="status-badge pending">Proses</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>14 Jan 2024</td>
+                                        <td>Dewi Lestari</td>
+                                        <td>XII IPS 1</td>
+                                        <td>Rp 350.000</td>
+                                        <td>Indomaret</td>
+                                        <td><span class="status-badge success">Lunas</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Siap Mengoptimalkan Administrasi Sekolah?</h2>
+                <p class="cta-desc">
+                    Hubungi kami sekarang untuk konsultasi gratis dan demo sistem SPP Online untuk sekolah Anda.
+                </p>
+                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20konsultasi%20tentang%20SPP%20Online" class="btn btn-cta">
+                    <i class="bi bi-whatsapp me-2"></i>
+                    Hubungi Kami Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">Beken<span>web</span></div>
+                    <p class="footer-desc">
+                        Solusi website pendidikan terpercaya untuk sekolah, pesantren, dan madrasah di Indonesia.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Layanan</h5>
+                    <ul class="footer-links">
+                        <li><a href="ppdb.html">PPDB Online</a></li>
+                        <li><a href="#">SPP Online</a></li>
+                        <li><a href="index.html#services">Website Sekolah</a></li>
+                        <li><a href="index.html#services">Website Pesantren</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Perusahaan</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="#">Testimonial</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Bantuan</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Dokumentasi</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="footer-title">Kontak</h5>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@bekenweb.com">info@bekenweb.com</a></li>
+                        <li><a href="tel:+6281234567890">+62 812-3456-7890</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bekenweb. Made with care by Bekenweb Team.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        var navbar = document.querySelector('.navbar-custom');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    var navHeight = navbar.offsetHeight;
+                    var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Countdown Timer
+        function startCountdown() {
+            var endDate = new Date();
+            endDate.setDate(endDate.getDate() + 7);
+
+            function updateCountdown() {
+                var now = new Date();
+                var diff = endDate - now;
+
+                if (diff > 0) {
+                    var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+                    document.querySelectorAll('.countdown-timer').forEach(function(timer) {
+                        var items = timer.querySelectorAll('.countdown-item');
+                        if (items[0]) items[0].querySelector('.countdown-number').textContent = String(days).padStart(2, '0');
+                        if (items[1]) items[1].querySelector('.countdown-number').textContent = String(hours).padStart(2, '0');
+                        if (items[2]) items[2].querySelector('.countdown-number').textContent = String(minutes).padStart(2, '0');
+                    });
+                }
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 60000);
+        }
+
+        startCountdown();
+    </script>
+</body>
+</html>
